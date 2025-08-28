@@ -2,6 +2,13 @@ on:
   push:
     branches:
       - main
+env:
+  ARCH: "x86_64"
+  IMAGE_NAME: "cinnamon"
+  IMAGE_REPO: "https://github.com/smCloudInTheSky/cinnamon/"
+  IMAGE_TAG: "main"
+  VERSION: "42"
+  VARIANT: "cloud"
 
 permissions:
   contents: write
@@ -30,19 +37,26 @@ jobs:
     needs: release-please
     if: needs.release-please.outputs.releases_created
     container:
-      image: fedora:38
+      image: fedora:42
       options: --privileged
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Generate ISO
-        uses: ublue-os/isogenerator@v2.3.1
+        uses: jasonn3/build-container-installer@main
         id: isogenerator
         with:
+          arch: ${{ env.ARCH }}
+          image_name: ${{ env.IMAGE_NAME }}
+          image_repo: ${{ env.IMAGE_REPO }}
+          image_tag: ${{ env.IMAGE_TAG }}
+          version: ${{ env.VERSION }}
+          variant: ${{ env.VARIANT }}
+          iso_name: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_TAG }}-${{ env.VERSION }}.iso
           image-name: cinnamon
           installer-repo: releases
-          installer-major-version: 38
+          installer-major-version: 42
           boot-menu-path: boot_menu.yml
       - name: install github CLI
         run: |
