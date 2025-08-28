@@ -20,7 +20,6 @@
                 "NetworkManager-wifi",
                 "NetworkManager-wwan",
                 "abrt-desktop",
-                "abrt-java-connector",
                 "blueman",
                 "cinnamon",
                 "cinnamon-control-center",
