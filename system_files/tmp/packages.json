@@ -68,34 +68,10 @@
             ]
         },
         "exclude": {
-            "all": [
-                "firefox",
-                "firefox-langpacks"
-            ]
+            "all": ["firefox", "firefox-langpacks"]
         }
     },
-    "37": {
-        "include": {
-            "all": [
-                "raw-thumbnailer"
-	    ]
-        },
-        "exclude": {
-            "all": []
-        }
-    },
-    "38": {
-        "include": {
-            "all": [
-                "raw-thumbnailer"
-            ]
-        },
-        "exclude": {
-            "all": [
-	    ]
-        }
-    },
-    "39": {
+    "42": {
         "include": {
             "all": []
         },
